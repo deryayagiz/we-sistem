@@ -670,3 +670,97 @@ grid-template-columns:1fr;
 }
 
 }
+/* HİZMETLER GELİŞMİŞ TASARIM */
+
+.service-list{
+border-top:none;
+display:grid;
+gap:18px;
+}
+
+.service-block{
+display:grid;
+grid-template-columns:90px 1fr;
+gap:35px;
+padding:42px 45px;
+border:1px solid var(--line);
+background:white;
+position:relative;
+overflow:hidden;
+transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.service-block:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 35px rgba(16,33,43,.08);
+}
+
+.service-block:before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+bottom:0;
+width:5px;
+background:var(--petrol);
+}
+
+.service-number{
+font-size:34px;
+line-height:1;
+color:var(--blue);
+font-weight:800;
+letter-spacing:-2px;
+padding-top:2px;
+}
+
+.service-label{
+display:inline-block;
+background:var(--light);
+color:var(--petrol);
+padding:6px 10px;
+font-size:10px;
+letter-spacing:2px;
+font-weight:800;
+margin-bottom:16px;
+}
+
+.service-content h2{
+font-size:34px;
+line-height:1.08;
+letter-spacing:-1.5px;
+color:var(--navy);
+margin-bottom:15px;
+}
+
+.service-content > p{
+max-width:780px;
+color:var(--muted);
+font-size:14px;
+line-height:1.8;
+margin-bottom:28px;
+}
+
+.service-items{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+border-top:1px solid var(--line);
+background:var(--paper);
+}
+
+.service-items div{
+padding:14px 18px;
+border-bottom:1px solid var(--line);
+color:var(--text);
+font-size:12px;
+}
+
+.service-items div:nth-child(odd){
+border-right:1px solid var(--line);
+}
+
+.service-items div:before{
+content:"";
+display:inline-block;
+width:6px;
+hei
