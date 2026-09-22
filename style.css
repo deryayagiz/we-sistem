@@ -583,3 +583,90 @@ footer{
     flex-wrap:wrap;
   }
 }
+/* HİZMETLER */
+
+.service-list{
+border-top:1px solid var(--line);
+}
+
+.service-block{
+display:grid;
+grid-template-columns:75px 1fr;
+gap:30px;
+padding:55px 0;
+border-bottom:1px solid var(--line);
+}
+
+.service-number{
+color:var(--petrol);
+font-size:12px;
+font-weight:800;
+letter-spacing:1px;
+padding-top:7px;
+}
+
+.service-label{
+color:var(--blue);
+font-size:11px;
+font-weight:800;
+letter-spacing:2px;
+margin-bottom:14px;
+}
+
+.service-content h2{
+font-size:38px;
+line-height:1.1;
+letter-spacing:-1.5px;
+color:var(--navy);
+margin-bottom:18px;
+}
+
+.service-content > p{
+max-width:760px;
+color:var(--muted);
+font-size:15px;
+line-height:1.8;
+margin-bottom:30px;
+}
+
+.service-items{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+border-top:1px solid var(--line);
+}
+
+.service-items div{
+padding:14px 18px 14px 0;
+border-bottom:1px solid var(--line);
+color:var(--text);
+font-size:13px;
+}
+
+.service-items div:before{
+content:"→";
+color:var(--blue);
+margin-right:10px;
+}
+
+/* HİZMETLER MOBİL */
+
+@media(max-width:900px){
+
+.service-block{
+grid-template-columns:1fr;
+gap:10px;
+}
+
+.service-number{
+padding-top:0;
+}
+
+.service-content h2{
+font-size:32px;
+}
+
+.service-items{
+grid-template-columns:1fr;
+}
+
+}
