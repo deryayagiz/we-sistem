@@ -1,1135 +1,924 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>WE-SİSTEM | İşletme Sistemleri ve Yönetim Çözümleri</title>
-
-<meta name="description" content="WE-SİSTEM, büyüyen işletmelerin finansal, operasyonel, teknolojik ve kurumsal yapılarını birlikte değerlendirir ve geliştirir.">
-
-<style>
-
-:root{
-  --navy:#10212B;
-  --navy2:#193541;
-  --petrol:#116978;
-  --blue:#45A9B8;
-  --light:#E9F4F5;
-  --paper:#F5F7F6;
-  --white:#FFFFFF;
-  --text:#24353D;
-  --muted:#687980;
-  --line:#D8E2E4;
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Inter,Arial,Helvetica,sans-serif;
-  color:var(--text);
-  background:var(--white);
-  line-height:1.6;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-.container{
-  width:min(1200px,calc(100% - 48px));
-  margin:auto;
-}
-
-/* =========================
-   HEADER
-========================= */
-
-header{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:10;
-}
-
-.nav{
-  height:88px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  color:white;
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:-.6px;
-}
-
-.logo-symbol{
-  width:29px;
-  height:29px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:3px;
-}
-
-.logo-symbol span{
-  background:white;
-  border-radius:3px;
-}
-
-.logo-symbol span:nth-child(2),
-.logo-symbol span:nth-child(3){
-  opacity:.5;
-}
-
-.menu{
-  display:flex;
-  gap:32px;
-  color:rgba(255,255,255,.78);
-  font-size:13px;
-}
-
-.menu a:hover{
-  color:white;
-}
-
-.header-button{
-  border:1px solid rgba(255,255,255,.3);
-  color:white;
-  padding:11px 17px;
-  border-radius:6px;
-  font-size:12px;
-  font-weight:700;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-  min-height:720px;
-  background:var(--navy);
-  color:white;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:80px 80px;
-}
-
-.hero:after{
-  content:"";
-  position:absolute;
-  width:700px;
-  height:700px;
-  right:-260px;
-  top:20px;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(69,169,184,.18),
-    transparent 65%
-  );
-}
-
-.hero-inner{
-  min-height:720px;
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:60px;
-}
-
-.eyebrow{
-  color:var(--blue);
-  font-size:11px;
-  letter-spacing:2.5px;
-  font-weight:800;
-  text-transform:uppercase;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:25px;
-}
-
-.eyebrow:before{
-  content:"";
-  width:35px;
-  height:1px;
-  background:var(--blue);
-}
-
-.hero h1{
-  font-size:clamp(52px,6vw,82px);
-  line-height:.95;
-  letter-spacing:-4px;
-  max-width:680px;
-  margin-bottom:30px;
-}
-
-.hero-text{
-  color:#B8C8CD;
-  font-size:17px;
-  max-width:560px;
-  line-height:1.75;
-  margin-bottom:35px;
-}
-
-.buttons{
-  display:flex;
-  gap:12px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:15px 21px;
-  border-radius:6px;
-  font-size:13px;
-  font-weight:800;
-}
-
-.btn-light{
-  background:white;
-  color:var(--navy);
-}
-
-.btn-outline{
-  border:1px solid rgba(255,255,255,.28);
-  color:white;
-}
-
-/* HERO DIAGRAM */
-
-.diagram{
-  height:500px;
-  position:relative;
-}
-
-.diagram-ring{
-  position:absolute;
-  width:420px;
-  height:420px;
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:50%;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-}
-
-.diagram-ring:before{
-  content:"";
-  position:absolute;
-  inset:55px;
-  border:1px dashed rgba(69,169,184,.35);
-  border-radius:50%;
-}
-
-.diagram-center{
-  position:absolute;
-  width:135px;
-  height:135px;
-  background:white;
-  color:var(--navy);
-  border-radius:50%;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  font-weight:900;
-  font-size:18px;
-  line-height:1.1;
-  box-shadow:0 25px 70px rgba(0,0,0,.3);
-}
-
-.system{
-  position:absolute;
-  width:135px;
-  height:135px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(255,255,255,.045);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.system strong{
-  font-size:13px;
-  letter-spacing:1px;
-}
-
-.system small{
-  color:#91A8AF;
-  font-size:9px;
-  margin-top:4px;
-}
-
-.system.one{
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-.system.two{
-  right:0;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.system.three{
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-.system.four{
-  left:0;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-/* =========================
-   INTRO
-========================= */
-
-.intro{
-  padding:115px 0;
-  background:white;
-}
-
-.intro-grid{
-  display:grid;
-  grid-template-columns:35% 65%;
-  gap:70px;
-}
-
-.label{
-  color:var(--petrol);
-  font-size:11px;
-  letter-spacing:2px;
-  font-weight:800;
-  margin-bottom:18px;
-}
-
-.intro h2{
-  font-size:46px;
-  line-height:1.05;
-  letter-spacing:-2.5px;
-}
-
-.intro-copy{
-  font-size:23px;
-  line-height:1.55;
-  color:#3B5059;
-  max-width:760px;
-}
-
-/* =========================
-   FOUR SYSTEMS
-========================= */
-
-.systems{
-  background:var(--paper);
-  padding:110px 0;
-}
-
-.section-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:50px;
-  margin-bottom:55px;
-}
-
-.section-top h2{
-  font-size:52px;
-  line-height:1;
-  letter-spacing:-3px;
-}
-
-.section-top p{
-  max-width:420px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-.system-row{
-  min-height:150px;
-  border-top:1px solid var(--line);
-  display:grid;
-  grid-template-columns:90px 260px 1fr;
-  align-items:center;
-  gap:25px;
-  transition:.25s;
-}
-
-.system-row:last-child{
-  border-bottom:1px solid var(--line);
-}
-
-.system-row:hover{
-  background:white;
-  padding:0 25px;
-}
-
-.system-number{
-  color:var(--blue);
-  font-size:11px;
-  font-weight:800;
-}
-
-.system-name{
-  font-size:34px;
-  font-weight:800;
-  letter-spacing:-1.5px;
-  color:var(--navy);
-}
-
-.system-description{
-  color:var(--muted);
-  font-size:14px;
-  max-width:570px;
-}
-
-/* =========================
-   METHOD
-========================= */
-
-.method{
-  background:var(--navy);
-  color:white;
-  padding:115px 0;
-}
-
-.method-grid{
-  display:grid;
-  grid-template-columns:38% 62%;
-  gap:70px;
-}
-
-.method h2{
-  font-size:55px;
-  line-height:.98;
-  letter-spacing:-3px;
-}
-
-.method-intro{
-  color:#91A6AD;
-  font-size:14px;
-  line-height:1.75;
-  margin-top:25px;
-  max-width:350px;
-}
-
-.method-list{
-  border-top:1px solid rgba(255,255,255,.14);
-}
-
-.method-item{
-  display:grid;
-  grid-template-columns:65px 1fr;
-  gap:20px;
-  padding:30px 0;
-  border-bottom:1px solid rgba(255,255,255,.14);
-}
-
-.method-no{
-  color:var(--blue);
-  font-size:11px;
-  font-weight:800;
-}
-
-.method-item h3{
-  font-size:28px;
-  margin-bottom:7px;
-}
-
-.method-item p{
-  color:#91A6AD;
-  font-size:14px;
-  max-width:600px;
-}
-
-/* =========================
-   CTA
-========================= */
-
-.cta{
-  padding:100px 0;
-  background:white;
-}
-
-.cta-box{
-  background:var(--petrol);
-  color:white;
-  padding:65px;
-  min-height:360px;
-  display:grid;
-  grid-template-columns:1fr auto;
-  align-items:center;
-  gap:50px;
-  position:relative;
-  overflow:hidden;
-}
-
-.cta-box:after{
-  content:"";
-  position:absolute;
-  width:500px;
-  height:500px;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:50%;
-  right:-160px;
-  top:-170px;
-}
-
-.cta h2{
-  font-size:50px;
-  line-height:1;
-  letter-spacing:-3px;
-  position:relative;
-  z-index:2;
-}
-
-.cta p{
-  color:#C8E0E4;
-  max-width:600px;
-  margin-top:20px;
-  font-size:14px;
-  position:relative;
-  z-index:2;
-}
-
-.cta-button{
-  background:white;
-  color:var(--navy);
-  padding:16px 22px;
-  border-radius:6px;
-  font-size:13px;
-  font-weight:800;
-  position:relative;
-  z-index:3;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  background:#0B171D;
-  color:white;
-  padding:50px 0 25px;
-}
-
-.footer-top{
-  display:flex;
-  justify-content:space-between;
-  gap:40px;
-}
-
-.footer-logo{
-  font-size:21px;
-  font-weight:800;
-}
-
-.footer-description{
-  color:#7F939A;
-  font-size:12px;
-  max-width:370px;
-  margin-top:10px;
-}
-
-.footer-links{
-  display:flex;
-  gap:28px;
-  color:#A7B7BC;
-  font-size:12px;
-}
-
-.copyright{
-  border-top:1px solid rgba(255,255,255,.1);
-  margin-top:40px;
-  padding-top:20px;
-  color:#5F737A;
-  font-size:10px;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:900px){
-
-  .menu{
-    display:none;
-  }
-
-  .hero-inner,
-  .intro-grid,
-  .method-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero-inner{
-    padding:130px 0 70px;
-  }
-
-  .diagram{
-    height:420px;
-  }
-
-  .section-top{
-    display:block;
-  }
-
-  .section-top p{
-    margin-top:20px;
-  }
-
-  .cta-box{
-    grid-template-columns:1fr;
-  }
-
-}
-
-@media(max-width:600px){
-
-  .container{
-    width:calc(100% - 30px);
-  }
-
-  .header-button{
-    display:none;
-  }
-
-  .hero h1{
-    font-size:47px;
-    letter-spacing:-3px;
-  }
-
-  .hero-text{
-    font-size:15px;
-  }
-
-  .buttons{
-    flex-direction:column;
-  }
-
-  .diagram{
-    transform:scale(.78);
-    margin:-40px;
-  }
-
-  .intro,
-  .systems,
-  .method,
-  .cta{
-    padding:75px 0;
-  }
-
-  .intro h2,
-  .section-top h2,
-  .method h2,
-  .cta h2{
-    font-size:40px;
-  }
-
-  .system-row{
-    grid-template-columns:50px 1fr;
-    min-height:125px;
-  }
-
-  .system-description{
-    display:none;
-  }
-
-  .cta-box{
-    padding:35px;
-  }
-
-  .footer-top{
-    flex-direction:column;
-  }
-
-  .footer-links{
-    flex-wrap:wrap;
-  }
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ORBİS KONTROL — Bütüncül sistem tasarımı ve uygulama. Mali kontrol, hukuki risk, afet ve fiziksel risk yönetimi, kurumsal yapı ve sistem entegrasyonu.">
+  <title>ORBİS KONTROL | Şirketiniz büyürken kontrolü kaybetmeyin.</title>
+
+  <style>
+    :root {
+      --navy: #10212b;
+      --petrol: #116978;
+      --blue: #45a9b8;
+      --light: #edf5f6;
+      --paper: #f7f9f9;
+      --white: #ffffff;
+      --text: #24353d;
+      --muted: #687980;
+      --line: #dce5e6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 3px solid var(--petrol);
+      border-radius: 9px;
+      position: relative;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--blue);
+      border-radius: 50%;
+      top: 8px;
+      left: 8px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--petrol);
+    }
+
+    .nav-button {
+      background: var(--navy);
+      color: white;
+      padding: 11px 18px;
+      border-radius: 6px;
+    }
+
+    .nav-button:hover {
+      background: var(--petrol);
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 105px 0 100px;
+      background:
+        linear-gradient(135deg, #f8fbfb 0%, #edf5f6 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--petrol);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--navy);
+      margin-bottom: 25px;
+    }
+
+    .hero-lead {
+      font-size: 21px;
+      line-height: 1.55;
+      max-width: 650px;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 21px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid var(--navy);
+    }
+
+    .button-primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--petrol);
+      border-color: var(--petrol);
+    }
+
+    .button-secondary {
+      background: white;
+      color: var(--navy);
+    }
+
+    .button-secondary:hover {
+      border-color: var(--petrol);
+      color: var(--petrol);
+    }
+
+    /* SYSTEM VISUAL */
+
+    .system-visual {
+      position: relative;
+      min-height: 430px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .system-core {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 1.25;
+      box-shadow: 0 20px 50px rgba(16,33,43,0.18);
+      position: relative;
+      z-index: 3;
+    }
+
+    .system-ring {
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border: 1px solid #b7d2d5;
+      border-radius: 50%;
+    }
+
+    .system-line {
+      position: absolute;
+      background: #b7d2d5;
+      height: 1px;
+      width: 330px;
+    }
+
+    .system-line.one {
+      transform: rotate(0deg);
+    }
+
+    .system-line.two {
+      transform: rotate(90deg);
+    }
+
+    .system-node {
+      position: absolute;
+      width: 118px;
+      min-height: 70px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 13px 10px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(16,33,43,0.07);
+    }
+
+    .node-1 { top: 0; }
+    .node-2 { right: 0; }
+    .node-3 { bottom: 0; }
+    .node-4 { left: 0; }
+
+    /* SECTIONS */
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      color: var(--navy);
+      letter-spacing: -0.035em;
+      margin-bottom: 18px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .intro {
+      background: white;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .big-statement {
+      font-size: 28px;
+      line-height: 1.35;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .intro-copy {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* SERVICES */
+
+    .services {
+      background: var(--paper);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      background: white;
+      border: 1px solid var(--line);
+      padding: 32px;
+      min-height: 210px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--blue);
+    }
+
+    .service-number {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .service-card h3 {
+      color: var(--navy);
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* HOW */
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .step {
+      padding: 30px 25px;
+      border-right: 1px solid var(--line);
+    }
+
+    .step:last-child {
+      border-right: none;
+    }
+
+    .step-number {
+      font-size: 12px;
+      color: var(--petrol);
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .step h3 {
+      color: var(--navy);
+      font-size: 20px;
+      margin-bottom: 9px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* CHECKUP */
+
+    .checkup {
+      background: var(--navy);
+      color: white;
+    }
+
+    .checkup-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .checkup h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .checkup p {
+      color: #c8d5d9;
+      max-width: 650px;
+    }
+
+    .checkup .button {
+      border-color: white;
+      background: white;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: var(--light);
+      text-align: center;
+    }
+
+    .contact h2 {
+      color: var(--navy);
+      font-size: clamp(32px, 4vw, 46px);
+      margin-bottom: 15px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .whatsapp-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 25px;
+      color: var(--petrol);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .online-dot {
+      width: 9px;
+      height: 9px;
+      background: #2aaa60;
+      border-radius: 50%;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #0b1920;
+      color: #b8c6ca;
+      padding: 35px 0;
+      font-size: 13px;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      color: white;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 75px 0;
+      }
+
+      .hero-grid,
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .system-visual {
+        min-height: 360px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .how-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .step:nth-child(2) {
+        border-right: none;
+      }
+
+      .step:nth-child(3),
+      .step:nth-child(4) {
+        border-top: 1px solid var(--line);
+      }
+
+      .checkup-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      h1 {
+        font-size: 42px;
+      }
+
+      .how-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .step:last-child {
+        border-bottom: none;
+      }
+
+      .system-ring {
+        width: 270px;
+        height: 270px;
+      }
+
+      .system-line {
+        width: 270px;
+      }
+
+      .system-core {
+        width: 135px;
+        height: 135px;
+        font-size: 15px;
+      }
+
+      .system-node {
+        width: 105px;
+        font-size: 11px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-
 <header>
+  <div class="container nav">
 
-<div class="container nav">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"></span>
+      ORBİS KONTROL
+    </a>
 
-<a href="index.html" class="logo">
+    <nav>
+      <a href="#neler-yapiyoruz">Neler Yapıyoruz?</a>
+      <a href="#nasil-calisiyoruz">Nasıl Çalışıyoruz?</a>
+      <a href="uzmanlar.html">Uzmanlarımız</a>
+      <a href="checkup.html">İşletme Check-up</a>
+      <a href="#iletisim" class="nav-button">Bize Ulaşın</a>
+    </nav>
 
-<span class="logo-symbol">
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-</span>
-
-WE-SİSTEM
-
-</a>
-
-
-<nav class="menu">
-
-<a href="yaklasim.html">Yaklaşımımız</a>
-<a href="hizmetler.html">Hizmetler</a>
-<a href="uzmanlar.html">Uzmanlarımız</a>
-<a href="checkup.html">KOBİ Check-up</a>
-<a href="iletisim.html">İletişim</a>
-
-</nav>
-
-
-<a href="checkup.html" class="header-button">
-İşletmenizi Değerlendirin
-</a>
-
-</div>
-
+  </div>
 </header>
 
 
-<!-- HERO -->
+<main>
 
-<section class="hero">
+  <!-- HERO -->
 
-<div class="container hero-inner">
+  <section class="hero">
 
+    <div class="container hero-grid">
 
-<div>
+      <div>
 
-<div class="eyebrow">
-İŞLETME SİSTEMLERİ
-</div>
+        <div class="eyebrow">ORBİS KONTROL</div>
 
+        <h1>Şirketiniz büyürken kontrolü kaybetmeyin.</h1>
 
-<h1>
-Şirketiniz büyürken sisteminiz de büyüsün.
-</h1>
+        <p class="hero-lead">
+          Bütüncül sistem tasarımı ve uygulama.
+        </p>
 
+        <p class="hero-text">
+          Mali kontrol, hukuki risk, afet ve fiziksel riskler,
+          kurumsal yapı ve sistem entegrasyonunu birlikte ele alıyoruz.
+        </p>
 
-<p class="hero-text">
-Finans, operasyon, teknoloji, insan ve kurumsal yapıyı
-birlikte değerlendiriyor; işletmenizin daha görünür,
-kontrollü ve sürdürülebilir çalışması için sistemler tasarlıyoruz.
-</p>
+        <div class="buttons">
+          <a href="#iletisim" class="button button-primary">
+            Ön Görüşme Talep Et
+          </a>
 
+          <a href="#neler-yapiyoruz" class="button button-secondary">
+            Neler Yapıyoruz?
+          </a>
+        </div>
 
-<div class="buttons">
+      </div>
 
-<a href="checkup.html" class="btn btn-light">
-İşletmenizi Değerlendirin
-</a>
 
-<a href="yaklasim.html" class="btn btn-outline">
-Yaklaşımımız
-</a>
+      <div class="system-visual">
 
-</div>
+        <div class="system-ring"></div>
+        <div class="system-line one"></div>
+        <div class="system-line two"></div>
 
-</div>
+        <div class="system-core">
+          BÜTÜNCÜL<br>
+          SİSTEM
+        </div>
 
+        <div class="system-node node-1">
+          Mali Kontrol
+        </div>
 
-<div class="diagram">
+        <div class="system-node node-2">
+          Hukuki Risk<br>& Uyum
+        </div>
 
-<div class="diagram-ring"></div>
+        <div class="system-node node-3">
+          Afet & Fiziksel<br>Risk
+        </div>
 
-<div class="diagram-center">
-WE-<br>SİSTEM
-</div>
+        <div class="system-node node-4">
+          Kurumsal Yapı<br>& Sistem
+        </div>
 
+      </div>
 
-<div class="system one">
-<strong>PARA</strong>
-<small>Mali Kontrol</small>
-</div>
+    </div>
 
+  </section>
 
-<div class="system two">
-<strong>SİSTEM</strong>
-<small>Operasyon & Veri</small>
-</div>
 
+  <!-- INTRO -->
 
-<div class="system three">
-<strong>SÜRDÜRÜLEBİLİRLİK</strong>
-<small>Uzun Vadeli Dayanıklılık</small>
-</div>
+  <section class="intro">
 
+    <div class="container intro-grid">
 
-<div class="system four">
-<strong>GÜVEN</strong>
-<small>Risk & Kurumsal Yapı</small>
-</div>
+      <div class="big-statement">
+        İşletmenize tek bir açıdan bakmıyoruz.
+      </div>
 
-</div>
+      <div class="intro-copy">
+        Bir şirketin finansal yapısı, hukuki süreçleri,
+        çalışanları, fiziksel varlıkları ve kullandığı sistemler
+        birbirinden bağımsız değildir.
+        <br><br>
+        ORBİS KONTROL, bu yapıların birbirleriyle nasıl çalıştığını
+        değerlendirir; ihtiyaç duyulan sistemi tasarlar ve
+        uygulanmasına eşlik eder.
+      </div>
 
-</div>
+    </div>
 
-</section>
+  </section>
 
 
-<!-- INTRO -->
+  <!-- SERVICES -->
 
-<section class="intro">
+  <section class="services" id="neler-yapiyoruz">
 
-<div class="container intro-grid">
+    <div class="container">
 
-<div>
+      <div class="section-heading">
 
-<div class="label">
-WE-SİSTEM
-</div>
+        <div class="eyebrow">Neler Yapıyoruz?</div>
 
-<h2>
-İşletmenin tamamını görmeden sistemi yönetemezsiniz.
-</h2>
+        <h2>Kontrolü oluşturan dört alan.</h2>
 
-</div>
+        <p>
+          İşletmenin sürdürülebilirliği için kritik olan
+          yapı ve risk alanlarını birlikte ele alıyoruz.
+        </p>
 
+      </div>
 
-<div class="intro-copy">
 
-Büyümek yalnızca daha fazla satış yapmak değildir.
-İşletme büyüdükçe para akışı, çalışanlar, yetkiler,
-süreçler, teknoloji ve riskler de büyür.
+      <div class="service-grid">
 
-<strong>
-WE-SİSTEM bu parçaların birbirleriyle nasıl çalıştığına bakar.
-</strong>
+        <a href="mali-kontrol.html" class="service-card">
 
-</div>
+          <div class="service-number">01</div>
 
-</div>
+          <h3>Mali Kontrol ve Finansal Sistemler</h3>
 
-</section>
+          <p>
+            Finansal görünürlük, mali süreçler,
+            raporlama ve kontrol mekanizmalarının kurulması.
+          </p>
 
+        </a>
 
-<!-- SYSTEMS -->
 
-<section class="systems">
+        <a href="hukuki-risk.html" class="service-card">
 
-<div class="container">
+          <div class="service-number">02</div>
 
-<div class="section-top">
+          <h3>Hukuki Risk ve Uyum</h3>
 
-<div>
+          <p>
+            Hukuki risklerin, yetki ve sorumlulukların
+            ve uyum süreçlerinin sistematik olarak ele alınması.
+          </p>
 
-<div class="label">
-04 ANA SİSTEM
-</div>
+        </a>
 
-<h2>
-Dört alan.<br>
-Tek işletme.
-</h2>
 
-</div>
+        <a href="afet-fiziksel-risk.html" class="service-card">
 
+          <div class="service-number">03</div>
 
-<p>
-İşletmenizi birbirinden bağımsız hizmetler üzerinden değil,
-birbirini tamamlayan dört temel yapı üzerinden değerlendiriyoruz.
-</p>
+          <h3>Afet ve Fiziksel Risk Yönetimi</h3>
 
-</div>
+          <p>
+            Afetlere hazırlık, fiziksel riskler,
+            acil durum yapıları ve iş sürekliliği.
+          </p>
 
+        </a>
 
-<div class="system-row">
 
-<div class="system-number">01</div>
+        <a href="kurumsal-sistem.html" class="service-card">
 
-<div class="system-name">
-PARA
-</div>
+          <div class="service-number">04</div>
 
-<div class="system-description">
-Nakit, banka, cari hesaplar, tahsilat, ödeme,
-bütçe, maliyet ve kârlılık görünürlüğü.
-</div>
+          <h3>Kurumsal Yapı ve Sistem Entegrasyonu</h3>
 
-</div>
+          <p>
+            Organizasyon, süreç, dijitalleşme ve
+            birbirinden kopuk sistemlerin birlikte çalışması.
+          </p>
 
+        </a>
 
-<div class="system-row">
+      </div>
 
-<div class="system-number">02</div>
+    </div>
 
-<div class="system-name">
-SİSTEM
-</div>
+  </section>
 
-<div class="system-description">
-Operasyon süreçleri, ERP, veri akışı,
-raporlama ve işletmenin günlük çalışma düzeni.
-</div>
 
-</div>
+  <!-- HOW WE WORK -->
 
+  <section id="nasil-calisiyoruz">
 
-<div class="system-row">
+    <div class="container">
 
-<div class="system-number">03</div>
+      <div class="section-heading">
 
-<div class="system-name">
-GÜVEN
-</div>
+        <div class="eyebrow">Nasıl Çalışıyoruz?</div>
 
-<div class="system-description">
-Hukuki ve kurumsal yapı, yetkiler, insan kaynağı,
-siber güvenlik ve iç kontrol.
-</div>
+        <h2>İhtiyacı tespit ediyor, sistemi kuruyoruz.</h2>
 
-</div>
+        <p>
+          Çalışmanın kapsamını ihtiyaca göre belirliyor;
+          gerektiğinde kısa süreli, gerektiğinde uzun vadeli
+          destek sağlıyoruz.
+        </p>
 
+      </div>
 
-<div class="system-row">
 
-<div class="system-number">04</div>
+      <div class="how-grid">
 
-<div class="system-name">
-SÜRDÜRÜLEBİLİRLİK
-</div>
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Tespit</h3>
+          <p>
+            Mevcut durumu, riskleri ve geliştirilmesi
+            gereken alanları ortaya koyuyoruz.
+          </p>
+        </div>
 
-<div class="system-description">
-İşletmenin uzun vadeli dayanıklılığı, kaynak kullanımı,
-risklere hazırlığı ve değişen koşullara uyum kapasitesi.
-</div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Görüş</h3>
+          <p>
+            Belirli bir konu için uzman değerlendirmesi
+            ve uygulanabilir yol haritası sunuyoruz.
+          </p>
+        </div>
 
-</div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Danışmanlık</h3>
+          <p>
+            İhtiyaca göre kısa veya uzun vadeli
+            uzman desteği sağlıyoruz.
+          </p>
+        </div>
 
-</div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <h3>Uygulama</h3>
+          <p>
+            Tasarlanan sistemi kuruyor, süreçleri
+            ve gerekli entegrasyonları uyguluyoruz.
+          </p>
+        </div>
 
-</section>
+      </div>
 
+    </div>
 
-<!-- METHOD -->
+  </section>
 
-<section class="method">
 
-<div class="container method-grid">
+  <!-- CHECKUP -->
 
+  <section class="checkup">
 
-<div>
+    <div class="container checkup-grid">
 
-<div class="label" style="color:#45A9B8">
-ÇALIŞMA MODELİ
-</div>
+      <div>
 
-<h2>
-Gör.<br>
-Kur.<br>
-İzle.
-</h2>
+        <h2>Şirketinizin kontrol fotoğrafını çekin.</h2>
 
-<p class="method-intro">
-Sorunu göstermek tek başına yeterli değildir.
-WE-SİSTEM'de değerlendirme, uygulanabilir
-bir sistem kurulumunun başlangıç noktasıdır.
-</p>
+        <p>
+          İşletme Check-up ile mali yapıdan süreçlere,
+          hukuki risklerden sistemlere kadar mevcut durumunuzu
+          bütüncül olarak değerlendirin.
+        </p>
 
-</div>
+      </div>
 
+      <a href="checkup.html" class="button">
+        İşletme Check-up
+      </a>
 
-<div class="method-list">
+    </div>
 
+  </section>
 
-<div class="method-item">
 
-<div class="method-no">
-01
-</div>
+  <!-- CONTACT -->
 
-<div>
+  <section class="contact" id="iletisim">
 
-<h3>GÖR</h3>
+    <div class="container">
 
-<p>
-Mevcut finansal ve operasyonel yapıyı,
-süreçleri, sistemleri, yetkileri ve riskleri ortaya çıkarıyoruz.
-</p>
+      <div class="eyebrow">Bize Ulaşın</div>
 
-</div>
+      <h2>Bir konuyu birlikte değerlendirelim.</h2>
 
-</div>
+      <p>
+        İlk görüşme için bize doğrudan ulaşabilirsiniz.
+      </p>
 
+      <div class="whatsapp-status">
+        <span class="online-dot"></span>
+        WhatsApp üzerinden ulaşabilirsiniz
+      </div>
 
-<div class="method-item">
+      <div class="buttons" style="justify-content:center;">
 
-<div class="method-no">
-02
-</div>
+        <a
+          href="https://wa.me/"
+          class="button button-primary"
+          target="_blank"
+        >
+          WhatsApp'tan Hemen Ulaş
+        </a>
 
-<div>
+        <a href="mailto:" class="button button-secondary">
+          E-posta Gönder
+        </a>
 
-<h3>KUR</h3>
+      </div>
 
-<p>
-İhtiyaca göre süreçleri, kontrol noktalarını,
-raporlama sistemlerini ve yönetim araçlarını tasarlıyoruz.
-</p>
+    </div>
 
-</div>
+  </section>
 
-</div>
-
-
-<div class="method-item">
-
-<div class="method-no">
-03
-</div>
-
-<div>
-
-<h3>İZLE</h3>
-
-<p>
-Kurulan sistemin çalışmasını göstergeler,
-riskler ve aksiyonlar üzerinden takip ediyoruz.
-</p>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CTA -->
-
-<section class="cta">
-
-<div class="container">
-
-<div class="cta-box">
-
-
-<div>
-
-<div class="label" style="color:#A7DCE3">
-KOBİ CHECK-UP
-</div>
-
-<h2>
-Şirketinizin kontrol fotoğrafını çekin.
-</h2>
-
-<p>
-Finans, sistem, güven ve sürdürülebilirlik başlıklarında
-kısa bir değerlendirme yapın. Güçlü alanlarınızı,
-kritik boşluklarınızı ve ilk aksiyonlarınızı görün.
-</p>
-
-</div>
-
-
-<a href="checkup.html" class="cta-button">
-Check-up'a Başla →
-</a>
-
-
-</div>
-
-</div>
-
-</section>
+</main>
 
 
 <footer>
 
-<div class="container">
+  <div class="container footer-grid">
 
+    <div class="footer-brand">
+      ORBİS KONTROL
+    </div>
 
-<div class="footer-top">
+    <div>
+      © 2026 ORBİS KONTROL
+    </div>
 
-
-<div>
-
-<div class="footer-logo">
-WE-SİSTEM
-</div>
-
-<p class="footer-description">
-İşletme sistemleri ve yönetim çözümleri.
-Şirketiniz büyürken sisteminiz de büyüsün.
-</p>
-
-</div>
-
-
-<div class="footer-links">
-
-<a href="yaklasim.html">Yaklaşımımız</a>
-<a href="hizmetler.html">Hizmetler</a>
-<a href="uzmanlar.html">Uzmanlarımız</a>
-<a href="checkup.html">KOBİ Check-up</a>
-<a href="iletisim.html">İletişim</a>
-
-</div>
-
-
-</div>
-
-
-<div class="copyright">
-© 2026 WE-SİSTEM
-</div>
-
-
-</div>
+  </div>
 
 </footer>
-
 
 </body>
 </html>
