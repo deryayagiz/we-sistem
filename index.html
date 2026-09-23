@@ -1,922 +1,458 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ORBİS KONTROL — Bütüncül sistem tasarımı ve uygulama. Mali kontrol, hukuki risk, afet ve fiziksel risk yönetimi, kurumsal yapı ve sistem entegrasyonu.">
-  <title>ORBİS KONTROL | Şirketiniz büyürken kontrolü kaybetmeyin.</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --navy: #10212b;
-      --petrol: #116978;
-      --blue: #45a9b8;
-      --light: #edf5f6;
-      --paper: #f7f9f9;
-      --white: #ffffff;
-      --text: #24353d;
-      --muted: #687980;
-      --line: #dce5e6;
-    }
+    <title>ORBİS KONTROL | Şirketiniz büyürken kontrolü kaybetmeyin.</title>
+    <meta name="description" content="ORBİS KONTROL; mali kontrol, hukuki risk, afet ve fiziksel risk yönetimi ile kurumsal sistem tasarımı ve uygulaması alanlarında bütüncül danışmanlık sunar.">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1180px, 92%);
-      margin: auto;
-    }
-
-    /* HEADER */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: var(--navy);
-      font-size: 18px;
-    }
-
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      border: 3px solid var(--petrol);
-      border-radius: 9px;
-      position: relative;
-    }
-
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: var(--blue);
-      border-radius: 50%;
-      top: 8px;
-      left: 8px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      color: var(--petrol);
-    }
-
-    .nav-button {
-      background: var(--navy);
-      color: white;
-      padding: 11px 18px;
-      border-radius: 6px;
-    }
-
-    .nav-button:hover {
-      background: var(--petrol);
-      color: white;
-    }
-
-    /* HERO */
-
-    .hero {
-      padding: 105px 0 100px;
-      background:
-        linear-gradient(135deg, #f8fbfb 0%, #edf5f6 100%);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      color: var(--petrol);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 5vw, 68px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      color: var(--navy);
-      margin-bottom: 25px;
-    }
-
-    .hero-lead {
-      font-size: 21px;
-      line-height: 1.55;
-      max-width: 650px;
-      color: var(--text);
-      margin-bottom: 18px;
-    }
-
-    .hero-text {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 32px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 14px 21px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 14px;
-      border: 1px solid var(--navy);
-    }
-
-    .button-primary {
-      background: var(--navy);
-      color: white;
-    }
-
-    .button-primary:hover {
-      background: var(--petrol);
-      border-color: var(--petrol);
-    }
-
-    .button-secondary {
-      background: white;
-      color: var(--navy);
-    }
-
-    .button-secondary:hover {
-      border-color: var(--petrol);
-      color: var(--petrol);
-    }
-
-    /* SYSTEM VISUAL */
-
-    .system-visual {
-      position: relative;
-      min-height: 430px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .system-core {
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      background: var(--navy);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-weight: 800;
-      font-size: 18px;
-      line-height: 1.25;
-      box-shadow: 0 20px 50px rgba(16,33,43,0.18);
-      position: relative;
-      z-index: 3;
-    }
-
-    .system-ring {
-      position: absolute;
-      width: 330px;
-      height: 330px;
-      border: 1px solid #b7d2d5;
-      border-radius: 50%;
-    }
-
-    .system-line {
-      position: absolute;
-      background: #b7d2d5;
-      height: 1px;
-      width: 330px;
-    }
-
-    .system-line.one {
-      transform: rotate(0deg);
-    }
-
-    .system-line.two {
-      transform: rotate(90deg);
-    }
-
-    .system-node {
-      position: absolute;
-      width: 118px;
-      min-height: 70px;
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 13px 10px;
-      text-align: center;
-      font-size: 12px;
-      font-weight: 700;
-      box-shadow: 0 10px 30px rgba(16,33,43,0.07);
-    }
-
-    .node-1 { top: 0; }
-    .node-2 { right: 0; }
-    .node-3 { bottom: 0; }
-    .node-4 { left: 0; }
-
-    /* SECTIONS */
-
-    section {
-      padding: 95px 0;
-    }
-
-    .section-heading {
-      max-width: 720px;
-      margin-bottom: 48px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(32px, 4vw, 48px);
-      line-height: 1.1;
-      color: var(--navy);
-      letter-spacing: -0.035em;
-      margin-bottom: 18px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .intro {
-      background: white;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .big-statement {
-      font-size: 28px;
-      line-height: 1.35;
-      color: var(--navy);
-      font-weight: 700;
-    }
-
-    .intro-copy {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    /* SERVICES */
-
-    .services {
-      background: var(--paper);
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .service-card {
-      background: white;
-      border: 1px solid var(--line);
-      padding: 32px;
-      min-height: 210px;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--blue);
-    }
-
-    .service-number {
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 800;
-      margin-bottom: 22px;
-    }
-
-    .service-card h3 {
-      color: var(--navy);
-      font-size: 23px;
-      margin-bottom: 12px;
-    }
-
-    .service-card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* HOW */
-
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .step {
-      padding: 30px 25px;
-      border-right: 1px solid var(--line);
-    }
-
-    .step:last-child {
-      border-right: none;
-    }
-
-    .step-number {
-      font-size: 12px;
-      color: var(--petrol);
-      font-weight: 800;
-      margin-bottom: 15px;
-    }
-
-    .step h3 {
-      color: var(--navy);
-      font-size: 20px;
-      margin-bottom: 9px;
-    }
-
-    .step p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* CHECKUP */
-
-    .checkup {
-      background: var(--navy);
-      color: white;
-    }
-
-    .checkup-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .checkup h2 {
-      font-size: clamp(32px, 4vw, 48px);
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .checkup p {
-      color: #c8d5d9;
-      max-width: 650px;
-    }
-
-    .checkup .button {
-      border-color: white;
-      background: white;
-      color: var(--navy);
-      white-space: nowrap;
-    }
-
-    /* CONTACT */
-
-    .contact {
-      background: var(--light);
-      text-align: center;
-    }
-
-    .contact h2 {
-      color: var(--navy);
-      font-size: clamp(32px, 4vw, 46px);
-      margin-bottom: 15px;
-    }
-
-    .contact p {
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-
-    .whatsapp-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 25px;
-      color: var(--petrol);
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .online-dot {
-      width: 9px;
-      height: 9px;
-      background: #2aaa60;
-      border-radius: 50%;
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: #0b1920;
-      color: #b8c6ca;
-      padding: 35px 0;
-      font-size: 13px;
-    }
-
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .footer-brand {
-      color: white;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 850px) {
-      nav {
-        display: none;
-      }
-
-      .hero {
-        padding: 75px 0;
-      }
-
-      .hero-grid,
-      .intro-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .system-visual {
-        min-height: 360px;
-      }
-
-      .service-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .how-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .step:nth-child(2) {
-        border-right: none;
-      }
-
-      .step:nth-child(3),
-      .step:nth-child(4) {
-        border-top: 1px solid var(--line);
-      }
-
-      .checkup-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 560px) {
-      h1 {
-        font-size: 42px;
-      }
-
-      .how-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .step {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .step:last-child {
-        border-bottom: none;
-      }
-
-      .system-ring {
-        width: 270px;
-        height: 270px;
-      }
-
-      .system-line {
-        width: 270px;
-      }
-
-      .system-core {
-        width: 135px;
-        height: 135px;
-        font-size: 15px;
-      }
-
-      .system-node {
-        width: 105px;
-        font-size: 11px;
-      }
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
+<header class="site-header">
+    <div class="container header-inner">
 
-    <a href="index.html" class="brand">
-      <span class="brand-mark"></span>
-      ORBİS KONTROL
-    </a>
+        <a href="index.html" class="brand">
+            <span class="brand-symbol" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
 
-    <nav>
-      <a href="#neler-yapiyoruz">Neler Yapıyoruz?</a>
-      <a href="#nasil-calisiyoruz">Nasıl Çalışıyoruz?</a>
-      <a href="uzmanlar.html">Uzmanlarımız</a>
-      <a href="checkup.html">İşletme Check-up</a>
-      <a href="#iletisim" class="nav-button">Bize Ulaşın</a>
-    </nav>
+            <span class="brand-name">
+                <strong>ORBİS</strong>
+                <small>KONTROL</small>
+            </span>
+        </a>
 
-  </div>
+        <nav class="main-nav">
+            <a href="hizmetler.html">Neler Yapıyoruz?</a>
+            <a href="nasil-calisiyoruz.html">Nasıl Çalışıyoruz?</a>
+            <a href="uzmanlar.html">Uzmanlarımız</a>
+            <a href="checkup.html">İşletme Check-up</a>
+            <a href="icerikler.html">İçerikler</a>
+        </nav>
+
+        <a href="bize-ulasin.html" class="header-contact">
+            Bize Ulaşın
+        </a>
+
+    </div>
 </header>
 
 
 <main>
 
-  <!-- HERO -->
+    <!-- HERO -->
 
-  <section class="hero">
+    <section class="hero">
+        <div class="container hero-grid">
 
-    <div class="container hero-grid">
+            <div class="hero-content">
 
-      <div>
+                <div class="eyebrow">
+                    BÜTÜNCÜL SİSTEM TASARIMI
+                </div>
 
-        <div class="eyebrow">ORBİS KONTROL</div>
+                <h1>
+                    Şirketiniz büyürken<br>
+                    <span>kontrolü kaybetmeyin.</span>
+                </h1>
 
-        <h1>Şirketiniz büyürken kontrolü kaybetmeyin.</h1>
+                <p class="hero-text">
+                    İşletmenizin finansal, hukuki, fiziksel ve kurumsal
+                    yapılarını birlikte ele alıyor; sürdürülebilir ve
+                    uygulanabilir sistemler tasarlıyoruz.
+                </p>
 
-        <p class="hero-lead">
-          Bütüncül sistem tasarımı ve uygulama.
-        </p>
+                <div class="hero-actions">
+                    <a href="hizmetler.html" class="button button-dark">
+                        Neler Yapıyoruz
+                        <span>→</span>
+                    </a>
 
-        <p class="hero-text">
-          Mali kontrol, hukuki risk, afet ve fiziksel riskler,
-          kurumsal yapı ve sistem entegrasyonunu birlikte ele alıyoruz.
-        </p>
+                    <a href="checkup.html" class="button button-light">
+                        İşletme Check-up
+                    </a>
+                </div>
 
-        <div class="buttons">
-          <a href="#iletisim" class="button button-primary">
-            Ön Görüşme Talep Et
-          </a>
+            </div>
 
-          <a href="#neler-yapiyoruz" class="button button-secondary">
-            Neler Yapıyoruz?
-          </a>
+
+            <div class="hero-visual" aria-hidden="true">
+
+                <div class="orbital orbital-one"></div>
+                <div class="orbital orbital-two"></div>
+                <div class="orbital orbital-three"></div>
+
+                <div class="visual-core">
+                    <span>ORBİS</span>
+                    <small>KONTROL</small>
+                </div>
+
+                <div class="visual-point point-one"></div>
+                <div class="visual-point point-two"></div>
+                <div class="visual-point point-three"></div>
+                <div class="visual-point point-four"></div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- INTRO -->
+
+    <section class="intro-section">
+        <div class="container intro-grid">
+
+            <div class="section-label">
+                <span>01</span>
+                ORBİS KONTROL
+            </div>
+
+            <div class="intro-content">
+
+                <h2>
+                    Bir işletmeyi tek bir açıdan
+                    yönetemezsiniz.
+                </h2>
+
+                <p>
+                    Büyüyen işletmelerde finans, hukuk, operasyon,
+                    insan kaynağı ve teknoloji birbirinden bağımsız
+                    çalışmaz. Bir alandaki zayıflık diğer alanlarda
+                    risk yaratabilir.
+                </p>
+
+                <p>
+                    ORBİS KONTROL, işletmenin tamamına bakarak
+                    mevcut yapıyı analiz eder, ihtiyaçları ortaya
+                    koyar ve uygulanabilir sistemler tasarlar.
+                </p>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section class="services-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+                <div>
+                    <div class="section-label">
+                        <span>02</span>
+                        NELER YAPIYORUZ?
+                    </div>
+
+                    <h2>
+                        İşletmenizin kritik yapılarını
+                        birlikte ele alıyoruz.
+                    </h2>
+                </div>
+            </div>
+
+
+            <div class="service-grid">
+
+                <a href="mali-kontrol.html" class="service-card">
+
+                    <span class="service-number">01</span>
+
+                    <div class="service-icon">
+                        +
+                    </div>
+
+                    <h3>
+                        Mali Kontrol
+                        <br>
+                        ve Finansal Sistemler
+                    </h3>
+
+                    <p>
+                        Finansal görünürlük, raporlama,
+                        süreçler ve kontrol mekanizmaları.
+                    </p>
+
+                    <span class="card-link">
+                        İncele →
+                    </span>
+
+                </a>
+
+
+                <a href="hukuki-risk.html" class="service-card">
+
+                    <span class="service-number">02</span>
+
+                    <div class="service-icon">
+                        +
+                    </div>
+
+                    <h3>
+                        Hukuki Risk
+                        <br>
+                        ve Uyum
+                    </h3>
+
+                    <p>
+                        Sözleşmeler, yetki ve sorumluluklar,
+                        süreçler ve uyum riskleri.
+                    </p>
+
+                    <span class="card-link">
+                        İncele →
+                    </span>
+
+                </a>
+
+
+                <a href="afet-fiziksel-risk.html" class="service-card">
+
+                    <span class="service-number">03</span>
+
+                    <div class="service-icon">
+                        +
+                    </div>
+
+                    <h3>
+                        Afet ve
+                        <br>
+                        Fiziksel Risk
+                    </h3>
+
+                    <p>
+                        Hazırlık, süreklilik, afet ve
+                        fiziksel risklerin yönetimi.
+                    </p>
+
+                    <span class="card-link">
+                        İncele →
+                    </span>
+
+                </a>
+
+
+                <a href="kurumsal-sistem.html" class="service-card">
+
+                    <span class="service-number">04</span>
+
+                    <div class="service-icon">
+                        +
+                    </div>
+
+                    <h3>
+                        Kurumsal Yapı
+                        <br>
+                        ve Sistem Entegrasyonu
+                    </h3>
+
+                    <p>
+                        Süreç, organizasyon, dijitalleşme
+                        ve sistemlerin entegrasyonu.
+                    </p>
+
+                    <span class="card-link">
+                        İncele →
+                    </span>
+
+                </a>
+
+            </div>
+
         </div>
 
-      </div>
+    </section>
 
 
-      <div class="system-visual">
+    <!-- PROCESS -->
 
-        <div class="system-ring"></div>
-        <div class="system-line one"></div>
-        <div class="system-line two"></div>
+    <section class="process-section">
 
-        <div class="system-core">
-          BÜTÜNCÜL<br>
-          SİSTEM
+        <div class="container">
+
+            <div class="process-header">
+
+                <div class="section-label">
+                    <span>03</span>
+                    NASIL ÇALIŞIYORUZ?
+                </div>
+
+                <h2>
+                    Tespitten uygulamaya.
+                </h2>
+
+                <p>
+                    İhtiyacın niteliğine göre yalnızca tespit
+                    yapabilir, görüş sunabilir veya sürecin
+                    tamamını birlikte yürütebiliriz.
+                </p>
+
+            </div>
+
+
+            <div class="process-grid">
+
+                <div class="process-item">
+                    <span>01</span>
+                    <h3>Tespit</h3>
+                    <p>
+                        Mevcut yapıyı, riskleri ve
+                        gelişim alanlarını ortaya koyarız.
+                    </p>
+                </div>
+
+                <div class="process-item">
+                    <span>02</span>
+                    <h3>Görüş</h3>
+                    <p>
+                        Belirli bir konuya ilişkin
+                        uzman değerlendirmesi sunarız.
+                    </p>
+                </div>
+
+                <div class="process-item">
+                    <span>03</span>
+                    <h3>Danışmanlık</h3>
+                    <p>
+                        Kısa veya uzun vadeli uzmanlık
+                        desteği sağlarız.
+                    </p>
+                </div>
+
+                <div class="process-item">
+                    <span>04</span>
+                    <h3>Uygulama</h3>
+                    <p>
+                        Tasarlanan sistemi işletmenizde
+                        birlikte kurar ve uygularız.
+                    </p>
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="system-node node-1">
-          Mali Kontrol
+    </section>
+
+
+    <!-- CHECK-UP -->
+
+    <section class="checkup-section">
+
+        <div class="container checkup-box">
+
+            <div class="checkup-number">
+                04
+            </div>
+
+            <div class="checkup-content">
+
+                <div class="section-label">
+                    İŞLETME CHECK-UP
+                </div>
+
+                <h2>
+                    İşletmenizin nerede
+                    durduğunu görün.
+                </h2>
+
+                <p>
+                    Finansal yapıdan süreçlere, yetki
+                    düzeninden fiziksel risklere kadar
+                    işletmenizin temel kontrol noktalarını
+                    birlikte değerlendirelim.
+                </p>
+
+                <a href="checkup.html" class="button button-dark">
+                    Check-up'ı İncele
+                    <span>→</span>
+                </a>
+
+            </div>
+
         </div>
 
-        <div class="system-node node-2">
-          Hukuki Risk<br>& Uyum
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact-section">
+
+        <div class="container contact-grid">
+
+            <div>
+                <div class="section-label">
+                    05 &nbsp; BİZE ULAŞIN
+                </div>
+
+                <h2>
+                    Bir konuyu birlikte
+                    değerlendirelim.
+                </h2>
+            </div>
+
+            <div class="contact-side">
+
+                <p>
+                    İşletmenizin mevcut yapısı veya
+                    karşılaştığınız belirli bir konu hakkında
+                    bizimle doğrudan iletişime geçebilirsiniz.
+                </p>
+
+                <div class="contact-actions">
+
+                    <a href="bize-ulasin.html" class="button button-dark">
+                        Bize Ulaşın
+                        <span>→</span>
+                    </a>
+
+                    <a href="https://wa.me/" class="whatsapp-link">
+                        WhatsApp'tan Hemen Ulaş
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="system-node node-3">
-          Afet & Fiziksel<br>Risk
-        </div>
-
-        <div class="system-node node-4">
-          Kurumsal Yapı<br>& Sistem
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- INTRO -->
-
-  <section class="intro">
-
-    <div class="container intro-grid">
-
-      <div class="big-statement">
-        İşletmenize tek bir açıdan bakmıyoruz.
-      </div>
-
-      <div class="intro-copy">
-        Bir şirketin finansal yapısı, hukuki süreçleri,
-        çalışanları, fiziksel varlıkları ve kullandığı sistemler
-        birbirinden bağımsız değildir.
-        <br><br>
-        ORBİS KONTROL, bu yapıların birbirleriyle nasıl çalıştığını
-        değerlendirir; ihtiyaç duyulan sistemi tasarlar ve
-        uygulanmasına eşlik eder.
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- SERVICES -->
-
-  <section class="services" id="neler-yapiyoruz">
-
-    <div class="container">
-
-      <div class="section-heading">
-
-        <div class="eyebrow">Neler Yapıyoruz?</div>
-
-        <h2>Kontrolü oluşturan dört alan.</h2>
-
-        <p>
-          İşletmenin sürdürülebilirliği için kritik olan
-          yapı ve risk alanlarını birlikte ele alıyoruz.
-        </p>
-
-      </div>
-
-
-      <div class="service-grid">
-
-        <a href="mali-kontrol.html" class="service-card">
-
-          <div class="service-number">01</div>
-
-          <h3>Mali Kontrol ve Finansal Sistemler</h3>
-
-          <p>
-            Finansal görünürlük, mali süreçler,
-            raporlama ve kontrol mekanizmalarının kurulması.
-          </p>
-
-        </a>
-
-
-        <a href="hukuki-risk.html" class="service-card">
-
-          <div class="service-number">02</div>
-
-          <h3>Hukuki Risk ve Uyum</h3>
-
-          <p>
-            Hukuki risklerin, yetki ve sorumlulukların
-            ve uyum süreçlerinin sistematik olarak ele alınması.
-          </p>
-
-        </a>
-
-
-        <a href="afet-fiziksel-risk.html" class="service-card">
-
-          <div class="service-number">03</div>
-
-          <h3>Afet ve Fiziksel Risk Yönetimi</h3>
-
-          <p>
-            Afetlere hazırlık, fiziksel riskler,
-            acil durum yapıları ve iş sürekliliği.
-          </p>
-
-        </a>
-
-
-        <a href="kurumsal-sistem.html" class="service-card">
-
-          <div class="service-number">04</div>
-
-          <h3>Kurumsal Yapı ve Sistem Entegrasyonu</h3>
-
-          <p>
-            Organizasyon, süreç, dijitalleşme ve
-            birbirinden kopuk sistemlerin birlikte çalışması.
-          </p>
-
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- HOW WE WORK -->
-
-  <section id="nasil-calisiyoruz">
-
-    <div class="container">
-
-      <div class="section-heading">
-
-        <div class="eyebrow">Nasıl Çalışıyoruz?</div>
-
-        <h2>İhtiyacı tespit ediyor, sistemi kuruyoruz.</h2>
-
-        <p>
-          Çalışmanın kapsamını ihtiyaca göre belirliyor;
-          gerektiğinde kısa süreli, gerektiğinde uzun vadeli
-          destek sağlıyoruz.
-        </p>
-
-      </div>
-
-
-      <div class="how-grid">
-
-        <div class="step">
-          <div class="step-number">01</div>
-          <h3>Tespit</h3>
-          <p>
-            Mevcut durumu, riskleri ve geliştirilmesi
-            gereken alanları ortaya koyuyoruz.
-          </p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">02</div>
-          <h3>Görüş</h3>
-          <p>
-            Belirli bir konu için uzman değerlendirmesi
-            ve uygulanabilir yol haritası sunuyoruz.
-          </p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">03</div>
-          <h3>Danışmanlık</h3>
-          <p>
-            İhtiyaca göre kısa veya uzun vadeli
-            uzman desteği sağlıyoruz.
-          </p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">04</div>
-          <h3>Uygulama</h3>
-          <p>
-            Tasarlanan sistemi kuruyor, süreçleri
-            ve gerekli entegrasyonları uyguluyoruz.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CHECKUP -->
-
-  <section class="checkup">
-
-    <div class="container checkup-grid">
-
-      <div>
-
-        <h2>Şirketinizin kontrol fotoğrafını çekin.</h2>
-
-        <p>
-          İşletme Check-up ile mali yapıdan süreçlere,
-          hukuki risklerden sistemlere kadar mevcut durumunuzu
-          bütüncül olarak değerlendirin.
-        </p>
-
-      </div>
-
-      <a href="checkup.html" class="button">
-        İşletme Check-up
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- CONTACT -->
-
-  <section class="contact" id="iletisim">
-
-    <div class="container">
-
-      <div class="eyebrow">Bize Ulaşın</div>
-
-      <h2>Bir konuyu birlikte değerlendirelim.</h2>
-
-      <p>
-        İlk görüşme için bize doğrudan ulaşabilirsiniz.
-      </p>
-
-      <div class="whatsapp-status">
-        <span class="online-dot"></span>
-        WhatsApp üzerinden ulaşabilirsiniz
-      </div>
-
-      <div class="buttons" style="justify-content:center;">
-
-        <a
-          href="https://wa.me/"
-          class="button button-primary"
-          target="_blank"
-        >
-          WhatsApp'tan Hemen Ulaş
-        </a>
-
-        <a href="mailto:" class="button button-secondary">
-          E-posta Gönder
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
+    </section>
 
 </main>
 
 
-<footer>
+<footer class="site-footer">
 
-  <div class="container footer-grid">
+    <div class="container footer-inner">
 
-    <div class="footer-brand">
-      ORBİS KONTROL
+        <div class="footer-brand">
+            <span class="footer-mark">
+                O
+            </span>
+
+            <div>
+                <strong>ORBİS KONTROL</strong>
+                <small>
+                    Bütüncül sistem tasarımı ve uygulama.
+                </small>
+            </div>
+        </div>
+
+        <div class="footer-copy">
+            © 2026 ORBİS KONTROL
+        </div>
+
     </div>
-
-    <div>
-      © 2026 ORBİS KONTROL
-    </div>
-
-  </div>
 
 </footer>
 
